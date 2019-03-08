@@ -1,5 +1,7 @@
 package BST;
 
+import BST.BST.treeNode;
+
 public class BST {
 	
 	public class treeNode {
@@ -79,6 +81,7 @@ public class BST {
 		}
 	}
 	
+	//isBST
 	public boolean isBST(treeNode n) {
 		return validateBST(n, Integer.MAX_VALUE, Integer.MIN_VALUE);
 	}
@@ -94,19 +97,38 @@ public class BST {
 			return false; 
 	}
 	
+	//find second largest
+	int findSecondLargest() {
+		if (root.left == null && root.right == null) 
+			return -1; 
+		treeNode temp = root; 
+		int parentVal = -1; 
+		while(temp.right != null) {
+			parentVal = temp.val; 
+			temp = temp.right; 
+		}
+		if (temp.left != null) {
+			temp = temp.left; 
+			while(temp.right != null) {
+				temp = temp.right; 
+			}
+			return temp.val;
+		} else {
+			return parentVal; 
+		}
+	}
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		BST t = new BST(); 
 		t.insert(10);
-		t.insert(5);
 		t.insert(15);
-		t.insert(4);
-		t.insert(8);
-		t.insert(13);
 		t.insert(18);
-		treeNode test = t.root.left.left; 
-		//t.printTree(t.root);
-		System.out.println(t.isBST(t.root));
+		t.insert(13);
+		t.insert(4);
+		t.insert(5);
+		t.insert(6);
+		System.out.println(t.findSecondLargest()); 
 	}
 
 }

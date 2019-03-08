@@ -7,6 +7,8 @@ public class Graph {
 	public int size;
 	public int[][] adjMatrix; 
 	
+	enum color {BLUE, GREEN, ORANGE, RED}
+	
 	public Graph(int size) {
 		nodes = new GraphNode[size]; 
 		this.size = size; 
@@ -81,7 +83,6 @@ public class Graph {
 		this.size = newSize; 
 	}
 	
-
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
