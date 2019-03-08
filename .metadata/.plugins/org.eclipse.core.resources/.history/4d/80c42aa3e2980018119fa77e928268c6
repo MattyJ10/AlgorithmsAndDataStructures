@@ -1,0 +1,40 @@
+public class InsertionSort {
+	
+	public int[] insertionSort(int[] input) {
+		for (int i = 1; i < input.length; i++) {
+			int val = input[i]; 
+			for (int j = i-1; j >= 0; j--) {
+				if (val < input[j]) {
+					//swap i with j
+					input[j+1] = input[j]; 
+					input[j] = val;
+					this.printArr(input);
+				} else if (val >= input[j]){
+					input[j+1] = val;
+					break; 
+				}
+			}
+		}
+		return input; 
+	}
+	
+	
+	
+	public void printArr(int[] input) {
+		for (int i = 0; i < input.length; i++) {
+			System.out.println(input[i]); 
+		}
+		System.out.println(); 
+	}
+	
+	
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		/*InsertionSort y = new InsertionSort(); 
+		int[] x = {1, 5, 3, 4, 8, 2}; 
+		y.insertionSort(x); 
+		y.printArr(x);; 
+	}
+
+}

@@ -1,0 +1,35 @@
+
+public class ZeroMatrix {
+	
+	public static void setZero(int[][] matrix) {
+		for (int i = 0; i < matrix.length; i ++) {
+			for (int j = 0; j < matrix[i].length; j++) {
+				if (matrix[i][j] == 0) {
+					matrix[i][j] = 'f';
+				}
+			}
+		}
+		for (int k = 0; k < matrix.length; k++) {
+			for (int n = 0; n < matrix[k].length; n++) {
+				if (matrix[k][n] == 'f') {
+					setRowColZero(k, n, matrix); 
+				}
+			}
+		}
+	}
+	
+	public static void setRowColZero(int row, int col, int[][] matrix) {
+		for (int i = 0; i < matrix[i].length; i++) {
+			matrix[row][i] = 0; 
+		}
+		for (int j = 0; j < matrix.length; j++) {
+			matrix[j][col] = 0; 
+		}
+	}
+	
+	
+	public static void main(String[] args) {
+		int[][] matrix = new int[2][3];
+		System.out.println(matrix[1].length); 
+	}
+}

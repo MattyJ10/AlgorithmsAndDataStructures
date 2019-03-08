@@ -1,0 +1,52 @@
+package Graph;
+
+public class WeightedGraph {
+	
+	public class WeightedGraphNode {
+		
+		int data; 
+		Edge[] edges; 
+		
+		WeightedGraphNode(int data) {
+			this.data = data; 
+		}
+		
+	}
+	
+	public class Edge {
+		
+		int weight; 
+		WeightedGraphNode start;
+		WeightedGraphNode end; 
+		
+		public Edge(int weight, WeightedGraphNode start, WeightedGraphNode end) {
+			this.weight = weight; 
+			this.start = start;
+			this.end = end; 
+		}
+		
+	}
+	
+	WeightedGraphNode[] nodes; 
+	int size; 
+	
+	public WeightedGraph(int size) {
+		this.nodes = new WeightedGraphNode[size]; 
+		this.size = 0;
+	}
+	
+	public void addNode(int value) {
+		if (size >= nodes.length - 1) {
+			System.out.println("no space in graph"); 
+			return;
+		}
+		this.nodes[size] = new WeightedGraphNode(value); 
+		
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

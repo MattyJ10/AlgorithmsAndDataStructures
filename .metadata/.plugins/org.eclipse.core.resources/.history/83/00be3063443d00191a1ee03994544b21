@@ -1,0 +1,26 @@
+import java.util.Scanner;
+import java.io.File;
+import java.io.FileNotFoundException; 
+  
+class GetInputFromUser 
+{ 
+    public static void main(String args[]) 
+    { 
+        // Using Scanner for Getting Input from User 
+        File f = new File("./test.txt"); 
+        Scanner in = new Scanner(System.in); 
+        System.out.println(in.delimiter()); 
+        while (in.hasNextLine()) {
+            System.out.println(in.next());
+        }
+        in.close();
+        /*
+        try {
+            Scanner fileRead = new Scanner(f); 
+            String next = fileRead.next(); 
+            System.out.println(next);
+        } catch(FileNotFoundException e) {
+            e.printStackTrace(); 
+        }*/
+    } 
+} 

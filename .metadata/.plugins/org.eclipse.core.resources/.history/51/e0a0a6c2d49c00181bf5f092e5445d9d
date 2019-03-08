@@ -1,0 +1,36 @@
+package linkedLists;
+
+public class PartitionList {
+	
+	public static LinkedList partition(LinkedList n, int p) {
+		LinkedList partition = new LinkedList(); 
+		Node runner = n.head; 
+		while(runner != null) {
+			if (runner.data >= p) {
+				partition.addToTail(runner.data);
+			} else {
+				partition.addToHead(runner.data);
+			}
+		}
+		System.out.println("here"); 
+		partition.printList();
+		return partition;
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Node head = new Node(3); 
+		LinkedList list = new LinkedList(head);
+		list.addToTail(5);
+		list.addToTail(8);
+		list.addToTail(5);
+		list.addToTail(10);
+		list.addToTail(2);
+		list.addToTail(1);
+		list.printList();
+		LinkedList part = partition(list, 5); 
+		part.printList();
+		
+	}
+
+}

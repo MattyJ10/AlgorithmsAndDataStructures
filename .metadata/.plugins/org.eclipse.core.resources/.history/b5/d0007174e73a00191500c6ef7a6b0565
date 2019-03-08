@@ -1,0 +1,26 @@
+import java.util.*; 
+import java.nio.charset.StandardCharsets; 
+import java.nio.file.*; 
+import java.io.*;
+
+public class ProjectTwoMain {
+	
+	public static List<String> readAndPrintFile(String filepath) {
+		List<String> data = new ArrayList<String>(); 
+		File read = new File(filepath); 
+		try {
+			data = Files.readAllLines(Paths.get(filepath), StandardCharsets.UTF_8);
+		}
+		catch (IOException e){
+			e.printStackTrace();
+		}
+		return data;
+		 
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

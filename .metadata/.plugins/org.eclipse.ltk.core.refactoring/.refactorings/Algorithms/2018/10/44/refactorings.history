@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;Graph.graphNode&apos; to &apos;GraphNode&apos;&#x0A;- Original project: &apos;Algorithms&apos;&#x0A;- Original element: &apos;Graph.graphNode&apos;&#x0A;- Renamed element: &apos;Graph.GraphNode&apos;&#x0A;- Update references to refactored element&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;graphNode&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;Graph{graphNode.java[graphNode" matchStrategy="1" name="GraphNode" qualified="false" references="true" similarDeclarations="false" stamp="1541003504913" textual="false" version="1.0"/>
+</session>

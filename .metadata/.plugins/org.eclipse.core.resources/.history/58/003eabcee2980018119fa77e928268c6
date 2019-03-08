@@ -1,0 +1,25 @@
+
+public class isPermutation {
+	public static boolean isPermute(String a, String b) {
+		if (a.length() != b.length()) {
+			return false; 
+		}
+		int countA = 0; 
+		int countB = 0; 
+		for (int i = 0; i < a.length(); i++) {
+			countA += a.charAt(i); 
+			countB += b.charAt(i); 
+		}
+		if (countA != countB) {
+			return false; 
+		} else {
+			return true; 
+		}
+	}
+	
+	public static void main(String[] args) {
+		String a = "test"; 
+		String b = "estt"; 
+		System.out.println(isPermute(a, b)); 
+	}
+}

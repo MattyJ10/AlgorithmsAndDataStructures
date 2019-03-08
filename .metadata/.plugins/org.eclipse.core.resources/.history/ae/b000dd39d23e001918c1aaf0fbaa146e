@@ -1,0 +1,23 @@
+
+public class Board {
+	
+	int[][] board; 
+	
+	public Board() {
+		this.board = new int[3][3]; 
+	}
+	
+	public void addToken(int row, int col) {
+		
+	}
+	
+	public void printBoard() {
+		
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

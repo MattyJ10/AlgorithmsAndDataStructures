@@ -1,0 +1,15 @@
+import java.io.File;
+
+public class ProjectTwoMain {
+	
+	public static List<String>() readAndPrintFile(String filepath) {
+		File read = new File(filepath); 
+		 
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

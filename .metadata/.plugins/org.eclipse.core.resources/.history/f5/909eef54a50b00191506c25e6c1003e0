@@ -1,0 +1,79 @@
+package Graph;
+
+import java.util.ArrayList;
+
+public class WeightedGraph {
+	
+	public class WeightedGraphNode {
+		
+		int data; 
+		ArrayList<Edge> edges = new ArrayList<Edge>(); 
+		
+		WeightedGraphNode(int data) {
+			this.data = data; 
+			
+		}
+		
+	}
+	
+	public class Edge {
+		
+		int weight; 
+		WeightedGraphNode start;
+		WeightedGraphNode end; 
+		
+		public Edge(int weight, WeightedGraphNode start, WeightedGraphNode end) {
+			this.weight = weight; 
+			this.start = start;
+			this.end = end; 
+		}
+		
+	}
+	
+	int[] shortestPathsFromStart; 
+	WeightedGraphNode[] nodes; 
+	int size; 
+	
+	public WeightedGraph(int size) {
+		this.nodes = new WeightedGraphNode[size]; 
+		this.size = 0;
+		this.shortestPathsFromStart = new int[size]; 
+	}
+	
+	public void addNode(int value) {
+		if (size >= nodes.length - 1) {
+			System.out.println("no space in graph"); 
+			return;
+		}
+		this.nodes[size] = new WeightedGraphNode(value); 
+		size++; 
+	}
+	
+	public void addEdge(int start, int end, int weight) {
+		int startIndex = findIndex(start); 
+		int endIndex = findIndex(end); 
+		if (startIndex != -1 && endIndex != -1) {
+			Edge e1 = new Edge(weight, nodes[startIndex], nodes[endIndex]);
+			Edge e2 = new Edge(weight, nodes[endIndex], nodes[startIndex]); 
+			nodes[startIndex].edges.add(e1); 
+			nodes[endIndex].edges.add(e2); 
+		} else {
+			System.out.println("Could not add edge, one of the values doesn't exist"); 
+		}
+	}
+	
+	public int findIndex(int value) {
+		for (int i = 0; i < size; i++) {
+			if (nodes[i].data == value) {
+				return i; 
+			}
+		}
+		return -1; 
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

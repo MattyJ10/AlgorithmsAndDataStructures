@@ -1,0 +1,11 @@
+package linkedLists;
+
+public class PartitionList {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Node head = new Node(3); 
+		LinkedList list = new LinkedList();
+	}
+
+}

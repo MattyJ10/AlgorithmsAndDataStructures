@@ -1,0 +1,14 @@
+
+public class isPalindromePermutation {
+	public static boolean isPalindromPermute(String s) {
+		int targetPairs = 0; 
+		int pairCount = 0; 
+		boolean[] track = new boolean[128]; 
+		if (s.length() % 2 == 0) {
+			targetPairs = s.length()/2; 
+		} else {
+			targetPairs = (s.length()-1)/2; 
+		}
+		
+	}
+}

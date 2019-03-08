@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;heap.Heap&apos; to &apos;MaxHeap&apos;&#x0A;- Original project: &apos;Algorithms&apos;&#x0A;- Original element: &apos;heap.Heap&apos;&#x0A;- Renamed element: &apos;heap.MaxHeap&apos;&#x0A;- Update references to refactored element&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;Heap&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;heap{Heap.java[Heap" matchStrategy="1" name="MaxHeap" qualified="false" references="true" similarDeclarations="false" stamp="1544054373129" textual="false" version="1.0"/>
+</session>

@@ -1,0 +1,16 @@
+package linkedLists;
+
+public class LinkedList {
+	Node head = null; 
+	Node tail = null; 
+	
+	public LinkedList(Node n) {
+		this.head = n; 
+	}
+	
+	public void addToTail(int n) {
+		Node end = new Node(n); 
+		this.tail.next = end; 
+		this.tail = end; 
+	}
+}
