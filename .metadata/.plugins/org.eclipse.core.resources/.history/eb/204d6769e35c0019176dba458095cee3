@@ -1,0 +1,25 @@
+package Graph;
+
+import java.util.LinkedList;
+import java.util.Queue;
+
+public class BFS {
+	
+	public static boolean breadthFirstSearch(GraphNode<String> start, String data) {
+		
+		Queue<GraphNode<String>> left = new LinkedList<GraphNode<String>>(); 
+		left.add(start);
+		
+		while(!left.isEmpty()) {
+			GraphNode<String> current = left.poll();
+			if (current.data == data) {
+				return true; 
+			}
+			for (GraphNode<String> n : current.neighbors) {
+				left.add(n); 
+			}
+		}
+		
+	}
+
+}

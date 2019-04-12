@@ -1,0 +1,56 @@
+package stackProblems;
+
+import java.util.Stack;
+
+public class StackTest {
+	
+	public static void printArrStack(ArrayStack stk) {
+		for (int i = 0; i < stk.count; i++) {
+			System.out.print(stk.data[i] + " ");
+		}
+		System.out.println(); 
+	}
+	
+	public static <Item> void printListStack(LinkedListStack.stackNode<Item> top) {
+		LinkedListStack.stackNode<Item> runner = top; 
+		while(runner != null) {
+			System.out.print(runner.data);
+			runner = runner.next; 
+		}
+		System.out.println(); 
+	}
+	
+	public static void sortStack(ArrayStack s) {
+		Stack<Integer> temp = new Stack<Integer>(); 
+		int tempVar; 
+		while (!s.isEmpty()) {
+			if (temp.isEmpty() || s.peek() > temp.peek()) {
+				temp.push(s.pop()); 
+			} else {
+				tempVar = s.pop(); 
+				while(!temp.isEmpty() && temp.peek() < tempVar) {
+					s.push(temp.pop());
+				}
+				temp.push(tempVar);
+			}
+		}
+		
+		while(!temp.isEmpty()) {
+			s.push(temp.pop()); 
+		}
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		ArrayStack arrStack = new ArrayStack(); 
+		arrStack.push(5);
+		arrStack.push(11); 
+		arrStack.push(2); 
+		arrStack.push(12); 
+		arrStack.push(1); 
+		printArrStack(arrStack); 
+		//sortStack(arrStack); 
+		printArrStack(arrStack); 
+	}
+
+}

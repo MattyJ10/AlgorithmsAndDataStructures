@@ -1,0 +1,6 @@
+String Problems:
+
+	- See if sorting would help
+	- See if iterating from the back of the array would help
+	- Be careful about shifting arrays, ensure you don't overwrite things, often better to loop from back when shifting. 
+	

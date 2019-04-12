@@ -1,6 +1,7 @@
 package BST;
 
-import BST.BST.treeNode;
+import java.util.ArrayList;
+import java.util.List;
 
 public class BST {
 	
@@ -25,25 +26,33 @@ public class BST {
 		this.root = null; 
 	}
 	
-	public void insert(int val) {
-		root = insertRec(val, root); 
-	}
-	
-	public treeNode insertRec(int val, treeNode root) {
-		if (root == null) {
-			root = new treeNode(val); 
-			return root; 
-		} 
-		if (val > root.val) {
-			root.right = insertRec(val, root.right);
-			root.right.parent = root; 
-		} else if (val <= root.val) {
-			root.left = insertRec(val, root.left);
-			root.left.parent = root; 
+	public void insert(int value) {
+		treeNode traverse = this.root;
+		if (this.root == null) {
+			this.root = new treeNode(value);
+			return;
 		}
-		
-		return root; 
+		findSpot(value, traverse);
 	}
+
+	public void findSpot(int value, treeNode n) {
+		if (value > n.val) {
+			if (n.right == null) {
+				n.right = new treeNode(value); 
+				return; 
+			} else {
+				findSpot(value, n.right); 
+			}
+		} else {
+			if (n.left == null) {
+				n.left = new treeNode(value); 
+				return; 
+			} else {
+				findSpot(value, n.left); 
+			}
+		}
+	}
+
 
 	public void printTree(treeNode root) {
 		if (root == null) {
@@ -118,6 +127,37 @@ public class BST {
 		}
 	}
 	
+	/*
+	 * CTCI Problem 4.3: List Of Depths
+	 * 		Problem Complexity: O(N)
+	 */
+	
+	List<List<Integer>> listOfDepths(treeNode root) {
+		List<List<Integer>> depths = new ArrayList<List<Integer>>();
+		depths.add(new ArrayList<Integer>()); 
+		depths.get(0).add(root.val);
+		generateList(root.left, 1, depths);
+		generateList(root.right, 1, depths);
+		return depths; 
+	}
+
+	void generateList(treeNode n, int currentDepth, List<List<Integer>> depths) {
+		if (n == null) {
+			return;
+		}
+		if (depths.size() == currentDepth) {
+			depths.add(new ArrayList<Integer>());
+			depths.get(currentDepth).add(n.val);
+			generateList(n.left, currentDepth + 1, depths);
+			generateList(n.right, currentDepth + 1, depths); 
+		} else {
+			depths.get(currentDepth).add(n.val);
+			generateList(n.left, currentDepth + 1, depths);
+			generateList(n.right, currentDepth + 1, depths); 
+		}
+	}
+
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		BST t = new BST(); 
@@ -128,7 +168,7 @@ public class BST {
 		t.insert(4);
 		t.insert(5);
 		t.insert(6);
-		System.out.println(t.findSecondLargest()); 
+		System.out.println(t.listOfDepths(t.root)); 
 	}
 
 }

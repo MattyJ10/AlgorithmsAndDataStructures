@@ -1,0 +1,9 @@
+package Graph;
+
+public class Edge {
+
+	GraphNode start;
+	GraphNode end; 
+	
+	
+}

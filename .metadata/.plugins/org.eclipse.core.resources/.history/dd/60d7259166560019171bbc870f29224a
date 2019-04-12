@@ -1,0 +1,65 @@
+package stringsAndArrays;
+
+import java.util.*;
+
+public class StringProblems {
+	
+	
+	/*	
+	 * 	CTCI PROBLEM 1.1: Is Unique
+	 *  	Solution Runtime: O(n) time and space
+	 *  	Alternative: sort string first then search for duplicates (uses no extra space). 
+	 *  
+	 *  	CTCI Solution/Notes: If the string is > 128 in length (ascii characters) then it's false
+	 */
+	public static boolean isUniqueChars(String input) {
+		HashSet<Character> chars = new HashSet<Character>();
+		for (int i = 0; i < input.length(); i++) {
+			char current = input.charAt(i); 
+			if (chars.contains(current)) {
+				return false; 
+			} else {
+				chars.add(current);
+			}
+		}
+		return true;
+	}
+	
+	/*
+	 * 	CTCI PROBLEM 1.2: Check Permutation
+	 * 		Solution Runtime: O(n) time and space
+	 * 		Alternative: Sort both strings and check if they are equal --> nlog(n) run time but O(1) space; 
+	 * 
+	 * 		CTCI Solution/Notes: 
+	 */
+	
+	public static boolean isPerm(String s1, String s2) {
+		if (s1.length() != s2.length()) 
+			return false;
+		
+		HashSet<Character> chars = new HashSet<Character>(); 
+
+		for (int i = 0; i < s1.length(); i++) {
+			char current = s1.charAt(i);
+			if (chars.contains(current)) 
+				chars.remove(current);
+			else 
+				chars.add(current);
+			current = s2.charAt(i);
+			if (chars.contains(current)) 
+				chars.remove(current);
+			else 
+				chars.add(current);
+		}
+		return chars.isEmpty(); 
+
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		String test = "tes"; 
+		String test2 = ""; 
+		System.out.println(isPerm(test, test2)); 
+	}
+
+}

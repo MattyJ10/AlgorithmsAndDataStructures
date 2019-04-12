@@ -1,0 +1,13 @@
+String Problems:
+	- See if sorting would help
+	- See if iterating from the back of the array would help
+	- Be careful about shifting arrays, ensure you don't overwrite things, often better to loop from back when shifting. 
+	- Count characters with a hashtable (or map, set)
+	- Ask about case sensitivity and Ascii values
+	
+LinkedList Problems:
+	- See if you can implement multiple runners
+	- Don't overthink the problem, if you're using a lot of pointers there's usually a simpler implementation
+	- Ensure you don't access a null element
+	- Make use of the "toolkit" (addToHead, addToTail, etc.)
+	

@@ -1,10 +1,12 @@
 package stackProblems;
 
+import java.util.Stack;
+
 public class StackTest {
 	
 	public static void printArrStack(ArrayStack stk) {
 		for (int i = 0; i < stk.count; i++) {
-			System.out.print(stk.data[i]);
+			System.out.print(stk.data[i] + " ");
 		}
 		System.out.println(); 
 	}
@@ -17,24 +19,41 @@ public class StackTest {
 		}
 		System.out.println(); 
 	}
+	
+	/*
+	 * 	CTCI Problem 3.5: Sort Stack
+	 * 		Solution Complexity: O(N^2) time and O(N) space
+	 * 		
+	 */
+	
+	public static ArrayStack sortStack(ArrayStack s) {
+		Stack<Integer> temp = new Stack<Integer>(); 
+		int tempVar; 
+		while (!s.isEmpty()) {
+			tempVar = s.pop(); 
+			while(!temp.isEmpty() && temp.peek() < tempVar) {
+				s.push(temp.pop());
+			}
+			temp.push(tempVar);
+		}
+		
+		while(!temp.isEmpty()) {
+			s.push(temp.pop()); 
+		}
+		return s; 
+	}
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		ArrayStack arrStack = new ArrayStack(); 
 		arrStack.push(5);
 		arrStack.push(11); 
-		printArrStack(arrStack);
-		arrStack.peek(); 
-		arrStack.pop(); 
-		printArrStack(arrStack);
-		System.out.println(); 
-		LinkedListStack<Integer> lStack = new LinkedListStack<Integer>(); 
-		lStack.push(5);
-		lStack.push(11);
-		printListStack(lStack.top); 
-		lStack.peek(); 
-		lStack.pop(); 
-		printListStack(lStack.top);
+		arrStack.push(2); 
+		arrStack.push(12); 
+		arrStack.push(1); 
+		printArrStack(arrStack); 
+		arrStack = sortStack(arrStack); 
+		printArrStack(arrStack); 
 	}
 
 }

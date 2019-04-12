@@ -1,0 +1,60 @@
+package Graph;
+
+import java.util.ArrayList;
+
+public class Graph<T> {
+	
+	public ArrayList<GraphNode<T>> nodes; 
+	
+	enum color {BLUE, GREEN, ORANGE, RED}
+	
+	public Graph() {
+		nodes = new ArrayList<GraphNode<T>>(); 
+	}
+	
+	public void addNode(T data) {
+		GraphNode<T> newNode = new GraphNode<T>(data); 
+		nodes.add(newNode);
+	}
+	
+	public void addEdge(T start, T end) {
+		int startIndex = getIndex(start); 
+		int endIndex = getIndex(end); 
+		if (startIndex == -1 || endIndex == -1)
+			return; 
+		this.nodes.get(startIndex).addEdge(this.nodes.get(endIndex));
+	}
+	
+	public int getIndex(T data) {
+		for (int i = 0; i < this.nodes.size(); i++) {
+			if (this.nodes.get(i) == data) 
+				return i; 
+		}
+		return -1; 
+	}
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		Graph<String> g = new Graph<String>();
+		g.addNode("Matt");
+		g.addNode("Elise");
+		g.addNode("One");
+		g.addNode("Two");
+		g.addNode("Three");
+		g.addNode("test");
+		g.addEdge("Matt", "Elise");
+		g.addEdge("Matt", "One");
+		g.addEdge("Matt", "Three");
+		g.addEdge("One", "test");
+		g.addEdge("Elise", "test");
+		
+		System.out.println(g.nodes.get(0).data);
+		for (int i = 0; i < g.nodes.size(); i++) {
+			g.nodes.get(i).visited = false; 
+		}
+		System.out.println(DFS.DepthFirstSearch(g.nodes.get(0), "test")); 
+
+	}
+
+}

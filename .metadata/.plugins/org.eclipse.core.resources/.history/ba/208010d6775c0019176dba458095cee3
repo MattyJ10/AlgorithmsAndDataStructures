@@ -1,0 +1,19 @@
+package stringsAndArrays;
+
+import java.util.PriorityQueue;
+
+public class ArrayProblems {
+	public static int highestProdOfThree(int[] arr) {
+		if (arr.length == 3) {
+			return arr[0] * arr[1] * arr[2];
+		}
+		PriorityQueue<Integer> topThree = new PriorityQueue<Integer>(); 
+		for (int i = 0; i < arr.length; i++) {
+			topThree.add(arr[i]); 
+		}
+		System.out.println(topThree.poll());
+		System.out.println(topThree.poll());
+		System.out.println(topThree.poll());
+		return topThree.poll() * topThree.poll() *topThree.poll(); 
+	}
+}

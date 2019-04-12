@@ -1,0 +1,119 @@
+package stringsAndArrays;
+
+import java.util.*;
+
+public class StringProblems {
+	
+	/*	
+	 * 	CTCI PROBLEM 1.1: Is Unique
+	 *  	Solution Runtime: O(n) time and space
+	 *  	Alternative: sort string first then search for duplicates (uses no extra space). 
+	 *  
+	 *  	CTCI Solution/Notes: If the string is > 128 in length (ascii characters) then it's false
+	 */
+	public static boolean isUniqueChars(String input) {
+		HashSet<Character> chars = new HashSet<Character>();
+		for (int i = 0; i < input.length(); i++) {
+			char current = input.charAt(i); 
+			if (chars.contains(current)) {
+				return false; 
+			} else {
+				chars.add(current);
+			}
+		}
+		return true;
+	}
+	
+	/*
+	 * 	CTCI PROBLEM 1.2: Check Permutation
+	 * 		Solution Runtime: O(n) time and space
+	 * 		Alternative: Sort both strings and check if they are equal --> nlog(n) run time but O(1) space
+	 * 
+	 * 		CTCI Solution/Notes: Check for case sensitivity, ask about whitespace, solutions are the same
+	 */
+	public static boolean isPerm(String s1, String s2) {
+		if (s1.length() != s2.length()) 
+			return false;
+		
+		HashSet<Character> chars = new HashSet<Character>(); 
+
+		for (int i = 0; i < s1.length(); i++) {
+			char current = s1.charAt(i);
+			if (chars.contains(current)) 
+				chars.remove(current);
+			else 
+				chars.add(current);
+			current = s2.charAt(i);
+			if (chars.contains(current)) 
+				chars.remove(current);
+			else 
+				chars.add(current);
+		}
+		return chars.isEmpty(); 
+
+	}
+	
+	/*
+	 * 	Interview Cake Problem 1.2: Reverse String
+	 * 		Complexity: O(N/2) time O(1) space
+	 */
+	public static void reverseString(char[] str) {
+		int i = 0; 
+		int j = str.length - 1; 
+		
+		while(i < j) {
+			char temp = str[i];
+			str[i] = str[j];
+			str[j] = temp; 
+			i++;
+			j--;
+		}
+	}
+	
+	/*
+	 * 	Interview Cake Problem 1.3: Reverse Words
+	 * 		
+	 */
+	public static void reverseSentence(char[] sentence) {
+		reverseString(sentence);
+		
+		for (int i = 0; i < sentence.length; i++) {
+			if (sentence[i] == ' ')
+				continue;
+			int j = i + 1; 
+			while (sentence[j] != ' ' && j < sentence.length) {
+				j++;
+			}
+			int k = j-1; 
+			while (i < k) {
+				char temp = sentence[i];
+				sentence[i] = sentence[k];
+				sentence[k] = temp; 
+				i++;
+				k--;
+			}
+			i = j; 
+		}
+
+	}
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		//Test Perm
+		String test = ""; 
+		String test2 = ""; 
+		System.out.println(isPerm(test, test2)); 
+		//Test Reverse
+		char[] str = new char[]{'c', 'h', 'e', 'c', 'k'};
+		reverseString(str); 
+		System.out.println(str); 
+		
+		char[] sentence = new char[]{'c', 'a', 'k', 'e', ' ', 'p', 'o', 'u', 'n', 'd', ' ', 's', 't', 'e', 'a', 'l'};
+		reverseSentence(sentence); 
+		//reverseString(sentence); 
+		System.out.println(sentence); 
+		 
+	}
+
+}

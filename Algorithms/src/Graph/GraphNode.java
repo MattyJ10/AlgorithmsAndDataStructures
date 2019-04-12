@@ -1,24 +1,31 @@
 package Graph;
 
-public class GraphNode {
+import java.util.ArrayList;
 
-	public String data; 
-	public int intData; 
+public class GraphNode<T> {
+
+	public T data;
 	public boolean visited; 
+	public ArrayList<GraphNode<T>> neighbors; 
 	
-	GraphNode(String data) {
+	GraphNode(T data) {
 		this.data = data; 
 		this.visited = false; 
+		this.neighbors = new ArrayList<GraphNode<T>>(); 
 	}
 	
-	GraphNode(GraphNode g) {
+	GraphNode(GraphNode<T> g) {
 		this.data = g.data; 
-		this.visited = g.visited; 
+		this.visited = false; 
+		this.neighbors = new ArrayList<GraphNode<T>>();
 	}
 	
-	GraphNode(int data) {
-		this.intData = data; 
-		this.visited = false; 
+	public void addEdge(GraphNode<T> e) {
+		this.neighbors.add(e); 
+	}
+	
+	public void removeEdge(GraphNode<T> e) {
+		this.neighbors.remove(e);
 	}
 	
 }

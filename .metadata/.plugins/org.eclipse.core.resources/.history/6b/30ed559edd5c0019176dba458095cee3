@@ -1,0 +1,18 @@
+package Graph;
+
+public class DFS {
+
+	public static boolean DepthFirstSearch(GraphNode<String> start, String end) {
+		
+		if (start.data == end) {
+			return true; 
+		}
+		
+		start.visited = true; 
+		for (int i = 0; i < start.neighbors.size(); i++) {
+			
+		}
+		
+	}
+	
+}

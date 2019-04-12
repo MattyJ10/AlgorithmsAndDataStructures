@@ -1,0 +1,17 @@
+package Graph;
+
+public class Edge {
+
+	GraphNode start;
+	GraphNode end; 
+	int weight; 
+	
+	public Edge(GraphNode s, GraphNode e) {
+		
+	}
+	
+	public Edge(GraphNode s, GraphNode e, int weight) {
+		
+	}
+	
+}

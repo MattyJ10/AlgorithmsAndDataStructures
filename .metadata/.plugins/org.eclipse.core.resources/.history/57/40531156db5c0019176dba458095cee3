@@ -1,0 +1,37 @@
+package Graph;
+
+import java.util.ArrayList;
+
+public class Graph<T> {
+	
+	public ArrayList<GraphNode<T>> nodes; 
+	
+	enum color {BLUE, GREEN, ORANGE, RED}
+	
+	public Graph() {
+		nodes = new ArrayList<GraphNode<T>>(); 
+	}
+	
+	public void addNode(T data) {
+		GraphNode<T> newNode = new GraphNode<T>(data); 
+		nodes.add(newNode);
+	}
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		Graph<T> g = new Graph<String>();
+		g.addNode("Matt");
+		g.addNode("Elise");
+		g.addNode("One");
+		g.addNode("Two");
+		g.addNode("Three");
+		g.addNode("test");
+		for (int i = 0; i < g.numNodes; i++) {
+			g.nodes[i].visited = false; 
+		}
+		System.out.println(DFS.DepthFirstSearch(g, "Matt", "Two")); 
+
+	}
+
+}

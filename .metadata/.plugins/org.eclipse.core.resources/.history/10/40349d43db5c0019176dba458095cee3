@@ -1,0 +1,67 @@
+package Graph;
+
+import java.util.ArrayList;
+
+public class Graph<T> {
+	
+	public ArrayList<GraphNode<T>> nodes; 
+	
+	enum color {BLUE, GREEN, ORANGE, RED}
+	
+	public Graph() {
+		nodes = new ArrayList<GraphNode<T>>(); 
+	}
+	
+	public void addNode(T data) {
+		GraphNode<T> newNode = new GraphNode<T>(data); 
+		nodes.add(newNode);
+	}
+	
+	public void increaseSize(int newSize) {
+		if (newSize < this.size) {
+			return; 
+		} 
+		GraphNode[] newNodes = new GraphNode[newSize]; 
+		for (int i = 0; i < nodes.length; i++) {
+			newNodes[i] = nodes[i]; 
+		}
+		
+		int[][] newAdjMatrix = new int[newSize][newSize]; 
+		
+		for (int i = 0; i < newSize; i++) {
+			for (int j = 0; j < newSize; j++) {
+				newAdjMatrix[i][j] = 0; 
+			}
+		}
+		
+		for (int i = 0; i < this.size; i++) {
+			for (int j = 0; i < this.size; j++) {
+				newAdjMatrix[i][j] = adjMatrix[i][j]; 
+			}
+		}
+		this.size = newSize; 
+	}
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		Graph g = new Graph(5);
+		g.addNode("Matt");
+		g.addNode("Elise");
+		g.addNode("One");
+		g.addNode("Two");
+		g.addNode("Three");
+		g.addNode("test");
+		g.addEdge("Matt", "Elise");
+		g.addEdge("Elise", "Matt");
+		g.addEdge("Matt", "Three");
+		g.addEdge("Elise", "One");
+		g.addEdge("One", "Two");
+		for (int i = 0; i < g.numNodes; i++) {
+			g.nodes[i].visited = false; 
+		}
+		System.out.println(DFS.DepthFirstSearch(g, "Matt", "Two")); 
+
+	}
+
+}

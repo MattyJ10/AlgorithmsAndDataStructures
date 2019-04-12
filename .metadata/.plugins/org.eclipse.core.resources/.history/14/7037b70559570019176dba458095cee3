@@ -1,0 +1,79 @@
+package linkedLists;
+
+import java.util.*;
+
+public class LinkedList {
+	Node head = null; 
+	Node tail = null; 
+	
+	public LinkedList() {}
+	
+	public LinkedList(Node n) {
+		this.head = n; 
+		this.tail = n; 
+	}
+	
+	public void addToTail(int n) {
+		Node end = new Node(n); 
+		this.tail.next = end; 
+		this.tail = end; 
+	}
+	
+	public void addToHead(int n) {
+		Node add = new Node(n); 
+		add.next = this.head;
+		this.head = add; 
+	}
+	
+	public void printList() {
+		Node runner = new Node(); 
+		runner = this.head; 
+		System.out.println("data: ");
+		while(runner != null) {
+			System.out.print(runner.data + ", ");
+			runner = runner.next;
+		}
+	}
+	
+	/*
+	 * 	CTCI Problem 2.1: Remove Dups
+	 * 		Solution Complexity: O(n) time and space
+	 * 		Alternative: Don't use hashset and check for each value in the list every time, O(n^2) time and O(1) space
+	 * 	
+	 * 		CTCI Solution/Notes: Nothing I didnt have
+	 */
+	
+	public void removeDups() {
+		HashSet<Integer> unique = new HashSet<Integer>();
+		Node runner = head; 
+		Node slow = null; 
+		while (runner != null) {
+			int current = runner.data; 
+			if (unique.contains(current)) {
+				slow.next = runner.next; 
+				runner = runner.next;
+			} else {
+				unique.add(current);	
+				slow = runner; 
+				runner = runner.next; 
+			}
+		}
+
+	}
+	
+	public static void main(String[] args) {
+		Node head = new Node(3); 
+		LinkedList list = new LinkedList(head);
+		list.addToTail(5);
+		list.addToTail(8);
+		list.addToTail(5);
+		list.addToTail(10);
+		list.addToTail(2);
+		list.addToTail(1);
+		list.printList();
+		list.removeDups(); 
+		list.printList(); 
+		
+		
+	}
+}

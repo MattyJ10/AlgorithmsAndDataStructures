@@ -1,92 +1,42 @@
 package Graph;
 
-public class Graph {
+import java.util.ArrayList;
+
+public class Graph<T> {
 	
-	public GraphNode[] nodes; 
-	public int numNodes; 
-	public int size;
-	public int[][] adjMatrix; 
+	public ArrayList<GraphNode<T>> nodes; 
 	
 	enum color {BLUE, GREEN, ORANGE, RED}
 	
-	public Graph(int size) {
-		nodes = new GraphNode[size]; 
-		this.size = size; 
-		this.numNodes = 0; 
-		adjMatrix = new int[size][size]; 
-		initMatrix(this.size); 
+	public Graph() {
+		nodes = new ArrayList<GraphNode<T>>(); 
 	}
 	
-	private void initMatrix(int size) {
-		for (int i = 0; i < size; i++) {
-			for (int j = 0; j < size; j++) {
-				adjMatrix[i][j] = 0; 
-			}
-		}
+	public void addNode(T data) {
+		GraphNode<T> newNode = new GraphNode<T>(data); 
+		nodes.add(newNode);
 	}
 	
-	public void addNode(String data) {
-		if (numNodes == size) {
-			return;
-		}
-		GraphNode newNode = new GraphNode(data); 
-		nodes[numNodes] = newNode; 
-		numNodes += 1; 
-	}
-	
-	public void addEdge(String dataOne, String dataTwo) {
-		
-		int indexOne = getIndex(dataOne); 
-		int indexTwo = getIndex(dataTwo); 
-		if (indexOne == -1 || indexTwo == -1) {
+	public void addEdge(T start, T end) {
+		int startIndex = getIndex(start); 
+		int endIndex = getIndex(end); 
+		if (startIndex == -1 || endIndex == -1)
 			return; 
-		} else {
-			adjMatrix[indexOne][indexTwo] = 1; 
-			
-			//if graph is undirected uncomment next line
-			//adjMatrix[indexTwo][indexOne]; 
-		}
-		
+		this.nodes.get(startIndex).addEdge(this.nodes.get(endIndex));
 	}
 	
-	public int getIndex(String val) {
-		for (int i = 0; i < nodes.length; i++) {
-			if (nodes[i].data == val) {
+	public int getIndex(T data) {
+		for (int i = 0; i < this.nodes.size(); i++) {
+			if (this.nodes.get(i).data == data) 
 				return i; 
-			}
 		}
 		return -1; 
-	}
-	
-	public void increaseSize(int newSize) {
-		if (newSize < this.size) {
-			return; 
-		} 
-		GraphNode[] newNodes = new GraphNode[newSize]; 
-		for (int i = 0; i < nodes.length; i++) {
-			newNodes[i] = nodes[i]; 
-		}
-		
-		int[][] newAdjMatrix = new int[newSize][newSize]; 
-		
-		for (int i = 0; i < newSize; i++) {
-			for (int j = 0; j < newSize; j++) {
-				newAdjMatrix[i][j] = 0; 
-			}
-		}
-		
-		for (int i = 0; i < this.size; i++) {
-			for (int j = 0; i < this.size; j++) {
-				newAdjMatrix[i][j] = adjMatrix[i][j]; 
-			}
-		}
-		this.size = newSize; 
 	}
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-		Graph g = new Graph(5);
+		Graph<String> g = new Graph<String>();
 		g.addNode("Matt");
 		g.addNode("Elise");
 		g.addNode("One");
@@ -94,14 +44,14 @@ public class Graph {
 		g.addNode("Three");
 		g.addNode("test");
 		g.addEdge("Matt", "Elise");
-		g.addEdge("Elise", "Matt");
+		g.addEdge("Matt", "One");
 		g.addEdge("Matt", "Three");
-		g.addEdge("Elise", "One");
-		g.addEdge("One", "Two");
-		for (int i = 0; i < g.numNodes; i++) {
-			g.nodes[i].visited = false; 
+		g.addEdge("One", "test");
+		g.addEdge("Elise", "test");
+		for (int i = 0; i < g.nodes.size(); i++) {
+			g.nodes.get(i).visited = false; 
 		}
-		System.out.println(DFS.DepthFirstSearch(g, "Matt", "Two")); 
+		System.out.println(BFS.breadthFirstSearch(g.nodes.get(0), "test"));
 
 	}
 

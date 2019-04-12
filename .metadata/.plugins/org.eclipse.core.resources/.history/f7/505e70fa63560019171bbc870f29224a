@@ -1,0 +1,32 @@
+package stringsAndArrays;
+
+import java.util.*;
+
+public class StringProblems {
+	
+	
+	/*	
+	 * 	CTCI PROBLEM 1.1: Is Unique
+	 *  solution runtime: O(n) time and space
+	 *  alternative: sort string first then search for duplicates (uses no extra space). 
+	 */
+	public static boolean isUniqueChars(String input) {
+		HashSet<Character> chars = new HashSet<Character>();
+		for (int i = 0; i < input.length(); i++) {
+			char current = input.charAt(i); 
+			if (chars.contains(current)) {
+				return false; 
+			} else {
+				chars.add(current);
+			}
+		}
+		return true;
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		String test = "tes"; 
+		System.out.println(isUniqueChars(test)); 
+	}
+
+}
